@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Nimboos Buycraft Priser</title>
   <style>
     body {
       margin: 0;
-      background: #121212;
       font-family: Arial, sans-serif;
+      background: #121212;
       color: white;
     }
     .navbar {
-      background: #1f1f1f;
-      padding: 15px;
       display: flex;
+      justify-content: center;
       gap: 20px;
-      font-size: 16px;
-      border-bottom: 2px solid #333;
+      background: #1f1f1f;
+      padding: 20px;
     }
-    .navbar a {
-      color: #ddd;
-      text-decoration: none;
+    .navbar button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #333;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
       transition: 0.2s;
     }
-    .navbar a:hover {
-      color: #fff;
+    .navbar button:hover {
+      background: #4caf50;
     }
     h1 {
       text-align: center;
-      padding: 30px 0;
-      margin: 0;
+      padding: 20px 0;
     }
     .grid {
       display: grid;
@@ -41,9 +44,9 @@
     }
     .card {
       background: #1f1f1f;
-      border: 2px solid #292929;
-      padding: 15px;
       border-radius: 10px;
+      border: 2px solid #292929;
+      overflow: hidden;
       transition: 0.2s;
     }
     .card:hover {
@@ -52,45 +55,68 @@
     }
     .card img {
       width: 100%;
-      border-radius: 8px;
+      display: block;
+    }
+    .card-content {
+      padding: 15px;
     }
     .card-title {
-      font-size: 20px;
-      margin: 10px 0 5px;
+      font-size: 18px;
+      margin: 0 0 5px 0;
     }
-    .price {
+    .card-price {
       color: #4caf50;
       font-weight: bold;
-      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
 
-  <div class="navbar">
-    <a href="admin.html">Admin</a>
-  </div>
+<h1>Nimboos Buycraft Priser</h1>
 
-  <h1>Nimboos Buycraft Priser</h1>
+<div class="navbar">
+  <button onclick="filterCategory('All')">Alle</button>
+  <button onclick="filterCategory('Ranks')">Ranks</button>
+  <button onclick="filterCategory('Upgrades')">Upgrades</button>
+  <button onclick="filterCategory('Kits')">Kits</button>
+  <button onclick="filterCategory('Keys')">Keys</button>
+</div>
 
-  <div class="grid" id="product-grid"></div>
+<div class="grid" id="product-grid"></div>
 
-  <script>
-    fetch("products.json")
-      .then(r => r.json())
-      .then(data => {
-        const grid = document.getElementById("product-grid");
-        data.products.forEach(p => {
-          grid.innerHTML += `
-            <div class="card">
-              <img src="${p.image}" />
-              <div class="card-title">${p.name}</div>
-              <div class="price">${p.price}</div>
-            </div>
-          `;
-        });
-      });
-  </script>
+<script>
+let products = [];
+fetch("products.json")
+  .then(res => res.json())
+  .then(data => {
+    products = data.products;
+    displayProducts(products);
+  });
+
+function displayProducts(items) {
+  const grid = document.getElementById('product-grid');
+  grid.innerHTML = '';
+  items.forEach(p => {
+    grid.innerHTML += `
+      <div class="card">
+        <img src="${p.image}" alt="${p.name}">
+        <div class="card-content">
+          <div class="card-title">${p.name}</div>
+          <div class="card-price">${p.price}</div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+function filterCategory(cat) {
+  if(cat === 'All') {
+    displayProducts(products);
+  } else {
+    displayProducts(products.filter(p => p.category === cat));
+  }
+}
+</script>
 
 </body>
 </html>
