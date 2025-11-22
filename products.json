@@ -1,18 +1,45 @@
 {
   "products": [
     {
+      "category": "Ranks",
       "name": "Titan Rank",
-      "price": "10 Stacks Diamond Blocks",
+      "price": "18 Stacks Diamond Blocks",
       "image": "https://via.placeholder.com/400x200"
     },
     {
-      "name": "VIP Rank",
-      "price": "4 Stacks Diamond Blocks",
+      "category": "Ranks",
+      "name": "Legend Rank",
+      "price": "8 Stacks Diamond Blocks",
       "image": "https://via.placeholder.com/400x200"
     },
     {
-      "name": "Madchemsit",
-      "price": "4 Stacks Diamond Blocks",
+      "category": "Ranks",
+      "name": "Madchemist Rank",
+      "price": "4,32 Stacks Diamond Blocks",
+      "image": "https://via.placeholder.com/400x200"
+    },    
+    {
+      "category": "Kits",
+      "name": "Kit OP",
+      "price": "2 Stacks Diamond Blocks",
+      "image": "https://via.placeholder.com/400x200"
+    },
+    {
+      "category": "Kits",
+      "name": "Kit Konge",
+      "price": "1,32 Stacks Diamond Blocks",
+      "image": "https://via.placeholder.com/400x200"
+    },
+    {
+      "category": "Kits",
+      "name": "Kit BF (2020 - 2025)",
+      "price": "5 Stacks Diamond Blocks",
+      "image": "https://via.placeholder.com/400x200"
+    },    
+    {
+      "category": "Keys",
+      "name": "Limited Keys",
+      "price": "25 Diamond Blocks",
       "image": "https://via.placeholder.com/400x200"
     }
   ]
