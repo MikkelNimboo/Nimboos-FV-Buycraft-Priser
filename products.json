@@ -1,0 +1,14 @@
+{
+  "products": [
+    {
+      "name": "Titan Rank",
+      "price": "10 Stacks Diamond Blocks",
+      "image": "https://via.placeholder.com/400x200"
+    },
+    {
+      "name": "VIP Rank",
+      "price": "4 Stacks Diamond Blocks",
+      "image": "https://via.placeholder.com/400x200"
+    }
+  ]
+}
