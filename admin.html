@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Admin Panel</title>
   <style>
     body {
@@ -17,7 +17,7 @@
       padding: 20px;
       border-radius: 10px;
     }
-    input, button {
+    input, select, button {
       width: 100%;
       padding: 10px;
       margin-top: 8px;
@@ -40,56 +40,52 @@
 
 <div class="box" id="login-box">
   <h2>Admin Login</h2>
-  <input id="pw" type="password" placeholder="Adgangskode" />
+  <input id="pw" type="password" placeholder="Adgangskode">
   <button onclick="login()">Log ind</button>
 </div>
 
 <div class="box" id="admin-box" style="display:none;">
   <h2>Tilføj nyt produkt</h2>
-
-  <input id="name" placeholder="Navn" />
-  <input id="price" placeholder="Pris" />
-  <input id="image" placeholder="Billede URL (valgfrit)" />
-
+  <select id="category">
+    <option value="Ranks">Ranks</option>
+    <option value="Upgrades">Upgrades</option>
+    <option value="Kits">Kits</option>
+    <option value="Keys">Keys</option>
+  </select>
+  <input id="name" placeholder="Navn">
+  <input id="price" placeholder="Pris">
+  <input id="image" placeholder="Billede URL (valgfrit)">
   <button onclick="addProduct()">Tilføj produkt</button>
-
   <p id="status"></p>
 </div>
 
 <script>
-  const PASSWORD = "Test123!";
+const PASSWORD = "Test123!";
 
-  function login() {
-    if (document.getElementById("pw").value === PASSWORD) {
-      document.getElementById("login-box").style.display = "none";
-      document.getElementById("admin-box").style.display = "block";
-    } else {
-      alert("Forkert adgangskode.");
-    }
+function login() {
+  if(document.getElementById("pw").value === PASSWORD){
+    document.getElementById("login-box").style.display = "none";
+    document.getElementById("admin-box").style.display = "block";
+  } else {
+    alert("Forkert adgangskode");
   }
+}
 
-  function addProduct() {
-    fetch("products.json")
-      .then(r => r.json())
-      .then(data => {
-        data.products.push({
-          name: document.getElementById("name").value,
-          price: document.getElementById("price").value,
-          image: document.getElementById("image").value || "https://via.placeholder.com/400x200"
-        });
+function addProduct() {
+  const cat = document.getElementById("category").value;
+  const name = document.getElementById("name").value;
+  const price = document.getElementById("price").value;
+  const image = document.getElementById("image").value || "https://via.placeholder.com/400x200";
 
-        const json = JSON.stringify(data, null, 2);
+  let products = JSON.parse(localStorage.getItem("products") || "[]");
+  products.push({category: cat, name: name, price: price, image: image});
+  localStorage.setItem("products", JSON.stringify(products));
 
-        const blob = new Blob([json], { type: "application/json" });
-        const a = document.createElement("a");
-        a.href = URL.createObjectURL(blob);
-        a.download = "products.json";
-        a.click();
-
-        document.getElementById("status").innerText =
-          "Produkt tilføjet! Upload filen products.json til GitHub igen for at gemme ændringer.";
-      });
-  }
+  document.getElementById("status").innerText = "Produkt tilføjet! Opdater index.html for at se det.";
+  document.getElementById("name").value = "";
+  document.getElementById("price").value = "";
+  document.getElementById("image").value = "";
+}
 </script>
 
 </body>
