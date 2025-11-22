@@ -2,7 +2,7 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8">
-  <title>Nimboos Buycraft Priser</title>
+  <title>Minecraft Shop</title>
   <style>
     body {
       margin: 0;
@@ -72,7 +72,7 @@
 </head>
 <body>
 
-<h1>Nimboos Buycraft Priser</h1>
+<h1>Minecraft Shop</h1>
 
 <div class="navbar">
   <button onclick="filterCategory('Ranks')">Ranks</button>
@@ -89,7 +89,7 @@ fetch("products.json")
   .then(res => res.json())
   .then(data => {
     products = data.products;
-    displayProducts(products);
+    // Vi starter med tom visning – produkter vises kun ved klik på kategori
   });
 
 function displayProducts(items) {
@@ -109,11 +109,7 @@ function displayProducts(items) {
 }
 
 function filterCategory(cat) {
-  if(cat === 'All') {
-    displayProducts(products);
-  } else {
-    displayProducts(products.filter(p => p.category === cat));
-  }
+  displayProducts(products.filter(p => p.category === cat));
 }
 </script>
 
