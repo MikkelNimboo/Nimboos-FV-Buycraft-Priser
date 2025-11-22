@@ -91,7 +91,7 @@ fetch("products.json")
   .then(res => res.json())
   .then(data => {
     products = data.products;
-    // Vi starter med tom visning – produkter vises kun ved klik på kategori
+    filterCategory('Ranks'); // start med Ranks
   });
 
 function displayProducts(items) {
