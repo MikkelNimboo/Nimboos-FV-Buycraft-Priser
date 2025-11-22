@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8">
-  <title>Min Minecraft Shop</title>
+  <meta charset="UTF-8" />
+  <title>Nimboos Buycraft Priser</title>
   <style>
     body {
       margin: 0;
@@ -10,8 +10,6 @@
       font-family: Arial, sans-serif;
       color: white;
     }
-
-    /* Top menu */
     .navbar {
       background: #1f1f1f;
       padding: 15px;
@@ -20,25 +18,19 @@
       font-size: 16px;
       border-bottom: 2px solid #333;
     }
-
     .navbar a {
       color: #ddd;
       text-decoration: none;
       transition: 0.2s;
     }
-
     .navbar a:hover {
       color: #fff;
     }
-
-    /* Page title */
     h1 {
       text-align: center;
       padding: 30px 0;
       margin: 0;
     }
-
-    /* Product grid */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -47,8 +39,6 @@
       max-width: 1200px;
       margin: auto;
     }
-
-    /* Product card */
     .card {
       background: #1f1f1f;
       border: 2px solid #292929;
@@ -56,82 +46,51 @@
       border-radius: 10px;
       transition: 0.2s;
     }
-
     .card:hover {
       border-color: #4caf50;
       transform: translateY(-3px);
     }
-
     .card img {
       width: 100%;
       border-radius: 8px;
     }
-
     .card-title {
       font-size: 20px;
       margin: 10px 0 5px;
     }
-
     .price {
       color: #4caf50;
       font-weight: bold;
       margin-bottom: 10px;
     }
-
-    .button {
-      display: inline-block;
-      background: #4caf50;
-      padding: 8px 12px;
-      border-radius: 6px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: 0.2s;
-    }
-
-    .button:hover {
-      background: #3b8c40;
-    }
   </style>
 </head>
 <body>
 
-  <!-- Top menu -->
   <div class="navbar">
-    <a href="#">Ranks</a>
-    <a href="#">Kits</a>
-    <a href="#">Crates</a>
-    <a href="#">Blocks</a>
+    <a href="admin.html">Admin</a>
   </div>
 
-  <h1>Minecraft Shop</h1>
+  <h1>Nimboos Buycraft Priser</h1>
 
-  <!-- Product grid -->
-  <div class="grid">
+  <div class="grid" id="product-grid"></div>
 
-    <!-- Product example -->
-    <div class="card">
-      <img src="https://via.placeholder.com/400x200" alt="Titan Rank">
-      <div class="card-title">Titan Rank</div>
-      <div class="price">10 Stacks Diamond Blocks</div>
-      <a class="button" href="#">Se Mere</a>
-    </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/400x200" alt="VIP Rank">
-      <div class="card-title">VIP Rank</div>
-      <div class="price">4 Stacks Diamond Blocks</div>
-      <a class="button" href="#">Se Mere</a>
-    </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/400x200" alt="Epic Crate">
-      <div class="card-title">Epic Crate Key</div>
-      <div class="price">6 Emerald Blocks</div>
-      <a class="button" href="#">Se Mere</a>
-    </div>
-
-  </div>
+  <script>
+    fetch("products.json")
+      .then(r => r.json())
+      .then(data => {
+        const grid = document.getElementById("product-grid");
+        data.products.forEach(p => {
+          grid.innerHTML += `
+            <div class="card">
+              <img src="${p.image}" />
+              <div class="card-title">${p.name}</div>
+              <div class="price">${p.price}</div>
+            </div>
+          `;
+        });
+      });
+  </script>
 
 </body>
 </html>
