@@ -41,6 +41,24 @@
       "name": "Limited Keys",
       "price": "25 Diamond Blocks",
       "image": "https://via.placeholder.com/400x200"
-    }
+    },
+    {
+      "category": "Upgrades",
+      "name": "Madchemist -> Legend",
+      "price": "4,5 Stacks Diamond Blocks",
+      "image": "https://i.imgur.com/WgK8SZJ.png"
+    },       
+    {
+      "category": "Upgrades",
+      "name": "Legend -> TItan",
+      "price": "13,5 Stacks Diamond Blocks",
+      "image": "https://i.imgur.com/qMzqw6W.png"
+    },       
+    {
+      "category": "Upgrades",
+      "name": "Madchesmit -> Titan",
+      "price": "10 Stacks Diamond Blocks",
+      "image": "https://i.imgur.com/qMzqw6W.png"
+    },    
   ]
 }
