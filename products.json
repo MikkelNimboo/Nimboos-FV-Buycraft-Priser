@@ -35,12 +35,30 @@
       "name": "Kit BF (2020 - 2025) single kit",
       "price": "6 Stacks Diamond Blocks",
       "image": "https://via.placeholder.com/400x200"
-    },    
+    },   
     {
       "category": "Keys",
       "name": "Limited Keys",
       "price": "25 Diamond Blocks",
       "image": "https://via.placeholder.com/400x200"
-    }  
+    }
+    {
+      "category": "Upgrades",
+      "name": "Madchemist -> Legend",
+      "price": "5 Stacks Diamond Blocks",
+      "image": "https://i.imgur.com/WgK8SZJ.png"
+    },
+    {
+      "category": "Upgrades",
+      "name": "Madchemist -> Titan",
+      "price": "13,5 Stacks Diamond Blocks",
+      "image": "https://i.imgur.com/qMzqw6W.png"
+    },
+    {
+      "category": "Upgrades",
+      "name": "Legend -> Titan",
+      "price": "10 Stacks Diamond Blocks",
+      "image": "https://i.imgur.com/qMzqw6W.png"
+    }       
   ]
 }
